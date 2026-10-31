@@ -18,11 +18,13 @@ def clean_shipments(raw, medians=None):
     raw['payment_mode'] = raw['payment_mode'].fillna('UnKnown')
     raw['declared_value_inr'] = pd.to_numeric(
         raw['declared_value']
+        .astype('string')
         .str.replace('₹', '', regex=False)
         .str.replace('\u20b9', '', regex=False)
         .str.replace(',', '', regex=False)
-        .str.strip()
-        )
+        .str.strip(),
+        errors='coerce'
+        ).astype(float)
     raw = raw.drop(columns=['declared_value'])
     raw['dispatch_time'] = pd.to_datetime(raw['dispatch_time'])
 
@@ -31,7 +33,7 @@ def clean_shipments(raw, medians=None):
     if medians is None:
         medians = {'parcel_weight_kg': float(raw['parcel_weight_kg'].median()),
                    'distance_km': float(raw['distance_km'].median()),
-                   'declared_value_inr': float(raw['distance_km'].median())}
+                   'declared_value_inr': float(raw['declared_value_inr'].median())}
 
     raw['parcel_weight_kg'] = raw['parcel_weight_kg'].fillna(medians.get('parcel_weight_kg'))
     raw['distance_km'] = raw['distance_km'].fillna(medians.get('distance_km'))
