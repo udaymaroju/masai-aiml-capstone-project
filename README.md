@@ -2,7 +2,7 @@
 # Delhivery Last-Mile Delay Intelligence Pipeline
 This repo holds code related to Masai AI/ML Capstone Project
 
-## Data findings
+## Data Findings
 - Service type: Express was delayed most often, with a delay rate of "0.4897" in the output table, compared with Standard at "0.2056" and Economy at "0.0857".
 - Hub tier: the delay rate rose from "0.0400" at Tier 1 to "0.4400" at Tier 3, showing a sharp increase in risk as the hub tier worsened.
 - Distance band: delay rate increased from "0.0219" in the 0-200 km band to "0.8523" in the 601+ km band, indicating a strong deterioration in on-time performance with longer distances.
