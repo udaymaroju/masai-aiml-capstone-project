@@ -10,7 +10,8 @@ FEATURES = [
     "hub_tier", "hub_daily_capacity",
     "label_print_batch", "scanner_build_no", "tape_roll_no", "sticker_serial_mod", "shelf_slot_no",
 ]
-
+NOISE_COLUMNS = ["label_print_batch", "scanner_build_no", "tape_roll_no", "sticker_serial_mod", "shelf_slot_no"]
+MEDIAN_COLUMNS = ["distance_km", "parcel_weight_kg", "declared_value_inr"]
 
 def clean_shipments(raw, medians=None):
     raw = raw.drop_duplicates()
